@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <!--Grocery List items-->
+  <ion-content padding>
+      <ion-list>
+            <!--For each item below, render for every number of items in Items list-->
+          <ion-item-sliding *ngFor="let item of items; let i = index"><!--index is each item being iterated upon;used with Remove button-->
+            <ion-item>
+              <h2>{{item.name}}</h2>
+              <p>{{item.quantity}}</p>
+            </ion-item>
+            <ion-item-options>
+              <!--Done Button that is used to remove items from list-->
+              <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
+                <ion-icon name="trash"></ion-icon>
+                Remove
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+          
+    </ion-list>
+    
+    <!--Floating Action Button To Add New Grocery Items to List-->
+    <ion-fab bottom right>
+      <button (click)="addItem()" ion-fab mini><ion-icon name="add"></ion-icon></button>
+    </ion-fab>   
+  </ion-content>
+  
